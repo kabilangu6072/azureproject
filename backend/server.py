@@ -130,7 +130,7 @@ def receive_events():
             with client:
                 client.receive(
                     on_event=on_event,
-                    starting_position="@latest",
+                    starting_position=os.environ.get("STARTING_POSITION", "-1"),
                 )
         except Exception as exc:
             print(f"Azure receiver error: {exc}. Reconnecting in 5 seconds...", flush=True)
