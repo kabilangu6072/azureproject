@@ -37,12 +37,14 @@ export function convertStringToAscii(textInput) {
 }
 
 export default function AzureWeb() {
-  // 1. Student Name & 2. Roll Number (editable with persistent local storage)
+  // 1. Student Name & 2. Roll Number
   const [studentName, setStudentName] = useState(() => {
-    return localStorage.getItem("azure_student_name") || "Student Name";
+    const saved = localStorage.getItem("azure_student_name");
+    return saved && saved !== "Student Name" ? saved : "KABILAN G U";
   });
   const [rollNumber, setRollNumber] = useState(() => {
-    return localStorage.getItem("azure_roll_number") || "ROLL-123456";
+    const saved = localStorage.getItem("azure_roll_number");
+    return saved && saved !== "ROLL-123456" ? saved : "24EIR043";
   });
   const [isEditingProfile, setIsEditingProfile] = useState(false);
 
